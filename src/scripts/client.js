@@ -16,7 +16,6 @@ setTimeout(()=> {
     console.log(passInput.value)
 }, 5000)
 
-
 buttonElm.addEventListener('click', function(event){
     console.log('button is clicked')
     event.preventDefault()
